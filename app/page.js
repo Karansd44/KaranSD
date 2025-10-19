@@ -8,6 +8,13 @@ import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Work from "./components/Work";
 import Blog from "./components/Blog";
+import dynamic from 'next/dynamic';
+
+// Dynamically import the Chatbot component with SSR disabled
+const Chatbot = dynamic(
+  () => import('./components/Chatbot/Chatbot'),
+  { ssr: false }
+);
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -35,14 +42,15 @@ export default function Home() {
 
   return (
     <>
-      <Navbar isDarkMode= {isDarkMode} setIsDarkMode={setIsDarkMode}/>
-      <Header isDarkMode= {isDarkMode} />
-      <About isDarkMode= {isDarkMode}/>
-      {/* <Services isDarkMode= {isDarkMode} /> */}
-      <Work isDarkMode= {isDarkMode}/>
-      {/* <Blog isDarkMode= {isDarkMode}/> */}
-      <Contact isDarkMode= {isDarkMode}/>
-      <Footer isDarkMode= {isDarkMode}/>
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
+      <Header isDarkMode={isDarkMode} />
+      <About isDarkMode={isDarkMode}/>
+      {/* <Services isDarkMode={isDarkMode} /> */}
+      <Work isDarkMode={isDarkMode}/>
+      {/* <Blog isDarkMode={isDarkMode}/> */}
+      <Contact isDarkMode={isDarkMode}/>
+      <Footer isDarkMode={isDarkMode}/>
+      <Chatbot isDarkMode={isDarkMode} />
     </>
   );
 }

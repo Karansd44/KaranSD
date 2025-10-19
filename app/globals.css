@@ -5,7 +5,8 @@
 *{
   font-family: Outfit;
 }
-/* Add these classes to your global CSS file */
+
+/* Form styles */
 .form-container {
   max-width: 400px;
   margin: 0 auto;
@@ -35,4 +36,252 @@
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+
+/* Chatbot custom styles */
+.react-chatbot-kit-chat-container {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  height: 100% !important;
+  background-color: var(--chat-background, white);
+}
+
+.react-chatbot-kit-chat-header {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  color: white;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.react-chatbot-kit-chat-input-container {
+  background-color: var(--chat-input-bg, #f9fafb);
+  padding: 12px;
+  border-top: 1px solid var(--chat-border, #e5e7eb);
+}
+
+.react-chatbot-kit-chat-message-container {
+  height: calc(100% - 130px) !important;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: var(--chat-background, white);
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color, #cbd5e1);
+  border-radius: 3px;
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover, #94a3b8);
+}
+
+.react-chatbot-kit-chat-input {
+  border-radius: 8px !important;
+  border: 2px solid var(--chat-input-border, #e5e7eb) !important;
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.react-chatbot-kit-chat-input:focus {
+  border-color: var(--chat-input-focus, #3B82F6) !important;
+  outline: none !important;
+}
+
+.react-chatbot-kit-chat-btn-send {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%) !important;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+  font-weight: 600 !important;
+  transition: transform 0.2s ease !important;
+}
+
+.react-chatbot-kit-chat-btn-send:hover {
+  transform: scale(1.05) !important;
+}
+
+.react-chatbot-kit-chat-btn-send:active {
+  transform: scale(0.95) !important;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  margin: 8px 0;
+  animation: slideInLeft 0.3s ease;
+}
+
+.react-chatbot-kit-user-chat-message {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) !important;
+  margin: 8px 0;
+  animation: slideInRight 0.3s ease;
+}
+
+.react-chatbot-kit-user-chat-message-arrow {
+  border-right-color: #8B5CF6 !important;
+}
+
+.react-chatbot-kit-chat-bot-message-container {
+  display: flex;
+  margin: 8px 0;
+}
+
+.react-chatbot-kit-chat-bot-avatar-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* Dark mode styles */
+.dark .react-chatbot-kit-chat-inner-container {
+  --chat-background: #111827;
+  --chat-input-bg: #1F2937;
+  --chat-input-border: #374151;
+  --chat-input-focus: #60A5FA;
+  --chat-border: #374151;
+  --scrollbar-color: #4B5563;
+  --scrollbar-hover: #6B7280;
+}
+
+.dark .react-chatbot-kit-chat-header {
+  background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+}
+
+.dark .react-chatbot-kit-chat-input {
+  background-color: #1F2937 !important;
+  color: white !important;
+}
+
+.dark .react-chatbot-kit-chat-bot-message {
+  background-color: #374151 !important;
+  color: white !important;
+}
+
+.dark .react-chatbot-kit-user-chat-message {
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%) !important;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Option buttons in chatbot */
+.options-container {
+  margin: 0.5rem 0;
+  background: transparent;
+}
+
+.options-list button {
+  transition: all 0.2s ease;
+  font-size: 12px;
+  text-align: center;
+}
+
+.options-list button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* LinkedIn and GitHub buttons */
+.linkedin-info a,
+.github-info a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.linkedin-info a:active,
+.github-info a:active {
+  transform: scale(0.95);
+}
+
+/* Work section - Enhanced image clarity */
+.work-image-container {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Ensure images are sharp and clear */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Better image loading */
+[style*="background-image"] {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Smooth transitions for work cards */
+.work-card-transition {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced shadow for better depth */
+.work-card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.work-card-shadow-hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure text is readable over images */
+.work-overlay-gradient {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    transparent 100%
+  );
 }

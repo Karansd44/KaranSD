@@ -1,19 +1,18 @@
 import { assets, workData } from "@/assets/assets";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const Work = ({ isDarkMode }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
-  const cardRefs = useRef([]);
 
-  // Color variants for project titles
-  const titleColors = [
-    "text-blue-600 dark:text-blue-400",
-    "text-purple-600 dark:text-purple-400",
-    "text-emerald-600 dark:text-emerald-400",
-    "text-amber-600 dark:text-amber-400"
-  ];
+  // Color variants for project categories
+  const categoryColors = {
+    "Web Design": "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 border-blue-500/30",
+    "Mobile App": "bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 border-purple-500/30",
+    "Python Application": "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-emerald-500/30",
+    "Web Application": "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 border-amber-500/30",
+  };
 
   // Enhanced animation variants
   const container = {
@@ -21,73 +20,24 @@ const Work = ({ isDarkMode }) => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const item = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
     show: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
         type: "spring",
-        stiffness: 80,
-        damping: 12,
-        duration: 0.6
+        stiffness: 100,
+        damping: 15,
+        duration: 0.5
       }
-    }
-  };
-
-  const cardHover = (index) => ({
-    hover: {
-      y: index === hoveredCard ? -8 : 0,
-      scale: index === hoveredCard ? 1.02 : 1,
-      boxShadow: index === hoveredCard 
-        ? isDarkMode 
-          ? "0 20px 40px -10px rgba(124, 58, 237, 0.25)"
-          : "0 20px 40px -10px rgba(59, 130, 246, 0.25)"
-        : "none",
-      transition: {
-        duration: 0.3,
-        ease: [0.4, 0, 0.2, 1]
-      }
-    }
-  });
-
-  const infoCard = {
-    hidden: { y: 80, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.4,
-        ease: "backOut"
-      }
-    }
-  };
-
-  const handleMouseMove = (e, index) => {
-    const card = cardRefs.current[index];
-    if (!card) return;
-    
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    // Calculate distance from center
-    const distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-    
-    // Activate hover when cursor is moving toward the center
-    if (distance < Math.max(rect.width, rect.height) / 2) {
-      setHoveredCard(index);
-    } else {
-      setHoveredCard(null);
     }
   };
 
@@ -168,98 +118,135 @@ const Work = ({ isDarkMode }) => {
           </motion.p>
         </div>
 
-        {/* Projects grid - 4 columns */}
+        {/* Projects grid - 3 columns for better image visibility */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, margin: "0px 0px -100px 0px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          viewport={{ once: false, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {workData.map((project, index) => (
-            <motion.a
-              ref={el => cardRefs.current[index] = el}
+            <motion.div
               variants={item}
-              whileHover="hover"
-              onMouseMove={(e) => handleMouseMove(e, index)}
-              onMouseLeave={() => setHoveredCard(null)}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
               key={index}
-              className="group relative overflow-hidden rounded-lg shadow-md"
-              custom={index}
+              className="group"
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <motion.div
-                variants={cardHover(index)}
-                className="aspect-[4/3] bg-cover bg-center rounded-lg relative"
-                style={{ 
-                  backgroundImage: `url(${project.bgImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
               >
-                {/* Image overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent transition-opacity duration-300 ${
-                  index === hoveredCard ? 'opacity-100' : 'opacity-0'
-                }`} />
-                
-                {/* Initial visible info */}
-                <div className={`absolute bottom-0 left-0 right-0 p-3 text-white transition-opacity duration-300 ${
-                  index === hoveredCard ? 'opacity-0' : 'opacity-100'
-                }`}>
-                  <h3 className={`font-bold text-md ${titleColors[index % titleColors.length]} drop-shadow-md`}>
-                    {project.title}
-                  </h3>
-                  <p className="text-xs mt-1 text-white/80 drop-shadow-md">
-                    {project.tech?.slice(0, 3).join(' • ')}
-                  </p>
-                </div>
-                
-                {/* Animated project info card */}
-                <motion.div 
-                  className="absolute bottom-0 left-0 right-0 p-3"
-                  initial="hidden"
-                  animate={index === hoveredCard ? "visible" : "hidden"}
-                  variants={infoCard}
+                {/* Card container with enhanced styling */}
+                <motion.div
+                  whileHover={{ y: -12 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className={`relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 ${
+                    isDarkMode 
+                      ? 'bg-gray-800/50 backdrop-blur-sm border border-gray-700/50' 
+                      : 'bg-white border border-gray-200'
+                  }`}
                 >
-                  <div className="bg-white dark:bg-gray-800 rounded-md p-3 shadow-lg">
-                    <h3 className={`font-bold text-md ${titleColors[index % titleColors.length]}`}>
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-xs mt-1 line-clamp-2">
-                      {project.description}
-                    </p>
-                    <div className="mt-2 flex flex-wrap gap-1">
-                      {project.tech?.slice(0, 4).map((tech, i) => (
-                        <motion.span 
-                          key={i}
-                          initial={{ scale: 0 }}
-                          animate={index === hoveredCard ? { scale: 1 } : { scale: 0 }}
-                          transition={{ delay: 0.05 * i }}
-                          className="text-[0.6rem] px-1.5 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full"
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-                    <motion.div 
+                  {/* Image container with better aspect ratio */}
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-900">
+                    {/* Image with zoom effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700"
+                      style={{ 
+                        backgroundImage: `url(${project.bgImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}
                       whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-500 dark:from-blue-400 dark:to-purple-400 flex items-center justify-center shadow-sm"
+                    />
+                    
+                    {/* Gradient overlay for better text readability */}
+                    <div className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-300 ${
+                      hoveredCard === index 
+                        ? 'from-black/80 via-black/40 to-transparent opacity-100' 
+                        : 'from-black/50 via-transparent to-transparent opacity-60'
+                    }`} />
+                    
+                    {/* Category badge */}
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md border ${
+                        categoryColors[project.description] || categoryColors["Web Design"]
+                      }`}>
+                        {project.description}
+                      </span>
+                    </div>
+
+                    {/* External link icon */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        opacity: hoveredCard === index ? 1 : 0,
+                        scale: hoveredCard === index ? 1 : 0.8
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-md flex items-center justify-center shadow-lg"
                     >
-                      <Image 
-                        src={isDarkMode ? assets.send_icon_dark : assets.send_icon} 
-                        alt="Visit" 
-                        width={12} 
-                        height={12} 
-                        className="w-3 h-3"
-                      />
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        className="w-5 h-5 text-blue-600 dark:text-blue-400" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
                     </motion.div>
                   </div>
+
+                  {/* Content section */}
+                  <div className="p-6">
+                    <motion.h3
+                      initial={{ opacity: 0.8 }}
+                      whileHover={{ opacity: 1 }}
+                      className="text-xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+                    >
+                      {project.title}
+                    </motion.h3>
+                    
+                    {/* Description with better visibility */}
+                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                      {project.description === "Web Design" && "A modern and responsive web design showcasing clean UI/UX principles."}
+                      {project.description === "Mobile App" && "Full-featured mobile application with intuitive user interface."}
+                      {project.description === "Python Application" && "Robust Python-based application with efficient functionality."}
+                      {project.description === "Web Application" && "Advanced web application with modern technologies."}
+                    </p>
+
+                    {/* View project button */}
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium text-sm"
+                    >
+                      <span>View Project</span>
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        className="w-4 h-4" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </motion.div>
+                  </div>
+
+                  {/* Animated border on hover */}
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: hoveredCard === index ? 1 : 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 origin-left"
+                  />
                 </motion.div>
-              </motion.div>
-            </motion.a>
+              </a>
+            </motion.div>
           ))}
         </motion.div>
 

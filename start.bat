@@ -1,0 +1,3 @@
+@echo off
+echo Starting KaranSD Portfolio with Chatbot...
+npm run dev

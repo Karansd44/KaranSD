@@ -35,6 +35,8 @@ import right_arrow from "./right-arrow.png";
 import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
 import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
+// Import chatbot icons from JavaScript file since we don't have the actual image files
+import { chatbotIcon, chatbotIconDark } from "./chatbot-icon.js";
 
 export const assets = {
   user_image,
@@ -74,6 +76,8 @@ export const assets = {
   send_icon,
   right_arrow_bold,
   right_arrow_bold_dark,
+  chatbot_icon: chatbotIcon,
+  chatbot_icon_dark: chatbotIconDark,
 };
 export const blogPosts = [
   {
@@ -92,14 +96,14 @@ export const blogPosts = [
 
 export const workData = [
   {
-    title: "Portfolio",
+    title: "Portfolio Website",
     description: "Web Design",
     bgImage: "/work-1.png",
     link: "https://github.com/Karansd44/PORTFOLIO",
     style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
   {
-    title: "Uber-Clone",
+    title: "Uber Clone",
     description: "Mobile App",
     bgImage: "/work-2.png",
     link: "https://github.com/Karansd44/uber_clone",
@@ -113,14 +117,14 @@ export const workData = [
     style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
   {
-    title: "Will be My Valentine",
+    title: "Valentine Website",
     description: "Web Design",
     bgImage: "/work-4.png",
     link: "https://karansd44.github.io/Will-you-Valentine-me/",
     style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
   {
-    title: "Login Page",
+    title: "Login Interface",
     description: "Mobile App",
     bgImage: "/work-5.png",
     link: "https://github.com/Karansd44/LOGIN-PAGE",
@@ -134,13 +138,19 @@ export const workData = [
     link:"#top"
   },
   {
-    title: "E-Commerce site",
-    description: "Web Design",
+    title: "E-Commerce Platform",
+    description: "Web Application",
     bgImage: "/work-7.png",
     style: { border: "9px solid #ddd", borderRadius: "5px" },
     link:"https://github.com/Karansd44/Ecommerce-webiste"
   },
-
+  {
+    title: "MedMind ASK",
+    description: "Web Application",
+    bgImage: "/work-8.png",
+    style: { border: "9px solid #ddd", borderRadius: "5px" },
+    link:"https://ai-powered-healthcare-medicare-ask.vercel.app/"
+  },
 ];
 
 export const serviceData = [

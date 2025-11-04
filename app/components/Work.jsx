@@ -5,14 +5,23 @@ import { motion } from "framer-motion";
 
 const Work = ({ isDarkMode }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("All");
 
   // Color variants for project categories
   const categoryColors = {
+    "Web Application": "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 border-amber-500/30",
     "Web Design": "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 border-blue-500/30",
     "Mobile App": "bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 border-purple-500/30",
     "Python Application": "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-emerald-500/30",
-    "Web Application": "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 border-amber-500/30",
   };
+
+  // Filter categories
+  const filterCategories = ["All", "Web Application", "Web Design", "Mobile App", "Python Application"];
+
+  // Filter projects based on active filter
+  const filteredProjects = activeFilter === "All" 
+    ? workData 
+    : workData.filter(project => project.description === activeFilter);
 
   // Enhanced animation variants
   const container = {
@@ -116,6 +125,43 @@ const Work = ({ isDarkMode }) => {
             Welcome to my web development portfolio! Explore a collection of
             projects showcasing my expertise in full stack web development.
           </motion.p>
+
+          {/* Project Filter Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+            className="flex flex-wrap justify-center gap-3 mt-8"
+          >
+            {filterCategories.map((category, index) => (
+              <motion.button
+                key={category}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.9 + index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveFilter(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeFilter === category
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
+              >
+                {category}
+                {category !== "All" && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full bg-white/20 text-xs">
+                    {workData.filter(project => project.description === category).length}
+                  </span>
+                )}
+                {category === "All" && (
+                  <span className="ml-2 px-2 py-0.5 rounded-full bg-white/20 text-xs">
+                    {workData.length}
+                  </span>
+                )}
+              </motion.button>
+            ))}
+          </motion.div>
         </div>
 
         {/* Projects grid - 3 columns for better image visibility */}
@@ -125,8 +171,9 @@ const Work = ({ isDarkMode }) => {
           whileInView="show"
           viewport={{ once: false, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          key={activeFilter} // Re-animate when filter changes
         >
-          {workData.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
               variants={item}
               key={index}
@@ -152,15 +199,14 @@ const Work = ({ isDarkMode }) => {
                 >
                   {/* Image container with better aspect ratio */}
                   <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-900">
-                    {/* Image with zoom effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700"
+                    {/* Image */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
                       style={{ 
                         backgroundImage: `url(${project.bgImage})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                       }}
-                      whileHover={{ scale: 1.1 }}
                     />
                     
                     {/* Gradient overlay for better text readability */}
@@ -213,10 +259,10 @@ const Work = ({ isDarkMode }) => {
                     
                     {/* Description with better visibility */}
                     <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                      {project.description === "Web Application" && "Advanced web application with modern technologies."}
                       {project.description === "Web Design" && "A modern and responsive web design showcasing clean UI/UX principles."}
                       {project.description === "Mobile App" && "Full-featured mobile application with intuitive user interface."}
                       {project.description === "Python Application" && "Robust Python-based application with efficient functionality."}
-                      {project.description === "Web Application" && "Advanced web application with modern technologies."}
                     </p>
 
                     {/* View project button */}

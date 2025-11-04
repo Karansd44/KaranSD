@@ -96,38 +96,24 @@ export const blogPosts = [
 
 export const workData = [
   {
-    title: "Portfolio Website",
-    description: "Web Design",
-    bgImage: "/work-1.png",
-    link: "https://github.com/Karansd44/PORTFOLIO",
-    style: { border: "2px solid #ddd", borderRadius: "5px" },
+    title: "MedMind ASK",
+    description: "Web Application",
+    bgImage: "/work-8.png",
+    style: { border: "9px solid #ddd", borderRadius: "5px" },
+    link:"https://ai-powered-healthcare-medicare-ask.vercel.app/"
+  },
+  {
+    title: "E-Commerce Platform",
+    description: "Web Application",
+    bgImage: "/work-7.png",
+    style: { border: "9px solid #ddd", borderRadius: "5px" },
+    link:"https://github.com/Karansd44/Ecommerce-webiste"
   },
   {
     title: "Uber Clone",
     description: "Mobile App",
     bgImage: "/work-2.png",
     link: "https://github.com/Karansd44/uber_clone",
-    style: { border: "2px solid #ddd", borderRadius: "5px" },
-  },
-  {
-    title: "Library Management",
-    description: "Python Application",
-    bgImage: "/work-3.png",
-    link: "https://github.com/Karansd44/library-Management",
-    style: { border: "2px solid #ddd", borderRadius: "5px" },
-  },
-  {
-    title: "Valentine Website",
-    description: "Web Design",
-    bgImage: "/work-4.png",
-    link: "https://karansd44.github.io/Will-you-Valentine-me/",
-    style: { border: "2px solid #ddd", borderRadius: "5px" },
-  },
-  {
-    title: "Login Interface",
-    description: "Mobile App",
-    bgImage: "/work-5.png",
-    link: "https://github.com/Karansd44/LOGIN-PAGE",
     style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
   {
@@ -138,18 +124,32 @@ export const workData = [
     link:"#top"
   },
   {
-    title: "E-Commerce Platform",
-    description: "Web Application",
-    bgImage: "/work-7.png",
-    style: { border: "9px solid #ddd", borderRadius: "5px" },
-    link:"https://github.com/Karansd44/Ecommerce-webiste"
+    title: "Library Management",
+    description: "Python Application",
+    bgImage: "/work-3.png",
+    link: "https://github.com/Karansd44/library-Management",
+    style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
   {
-    title: "MedMind ASK",
-    description: "Web Application",
-    bgImage: "/work-8.png",
-    style: { border: "9px solid #ddd", borderRadius: "5px" },
-    link:"https://ai-powered-healthcare-medicare-ask.vercel.app/"
+    title: "Portfolio Website",
+    description: "Web Design",
+    bgImage: "/work-1.png",
+    link: "https://github.com/Karansd44/PORTFOLIO",
+    style: { border: "2px solid #ddd", borderRadius: "5px" },
+  },
+  {
+    title: "Login Interface",
+    description: "Mobile App",
+    bgImage: "/work-5.png",
+    link: "https://github.com/Karansd44/LOGIN-PAGE",
+    style: { border: "2px solid #ddd", borderRadius: "5px" },
+  },
+  {
+    title: "Valentine Website",
+    description: "Web Design",
+    bgImage: "/work-4.png",
+    link: "https://karansd44.github.io/Will-you-Valentine-me/",
+    style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
 ];
 

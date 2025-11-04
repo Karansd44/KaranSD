@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@octokit/rest": "^22.0.1",
     "axios": "^1.8.2",
     "bcryptjs": "^3.0.2",
     "jsonwebtoken": "^9.0.2",
@@ -20,7 +21,8 @@
     "react": "^19.0.0",
     "react-chatbot-kit": "^2.2.2",
     "react-dom": "^19.0.0",
-    "swr": "^2.3.2"
+    "swr": "^2.3.2",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

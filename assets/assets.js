@@ -110,6 +110,13 @@ export const workData = [
     link:"https://github.com/Karansd44/Ecommerce-webiste"
   },
   {
+    title: "Cocktail Website",
+    description: "Web Design",
+    bgImage: "/work-9.png",
+    link: "https://cock-tail.vercel.app/",
+    style: { border: "2px solid #ddd", borderRadius: "5px" },
+  },
+  {
     title: "Uber Clone",
     description: "Mobile App",
     bgImage: "/work-2.png",
@@ -151,6 +158,7 @@ export const workData = [
     link: "https://karansd44.github.io/Will-you-Valentine-me/",
     style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
+
 ];
 
 export const serviceData = [

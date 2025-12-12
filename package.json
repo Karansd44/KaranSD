@@ -17,7 +17,7 @@
     "lucide-react": "^0.479.0",
     "mongoose": "^8.12.1",
     "motion": "^12.4.4",
-    "next": "15.1.7",
+    "next": "15.1.11",
     "react": "^19.0.0",
     "react-chatbot-kit": "^2.2.2",
     "react-dom": "^19.0.0",

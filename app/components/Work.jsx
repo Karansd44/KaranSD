@@ -10,13 +10,12 @@ const Work = ({ isDarkMode }) => {
   // Color variants for project categories
   const categoryColors = {
     "Web Application": "bg-amber-500/10 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 border-amber-500/30",
-    "Web Design": "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 border-blue-500/30",
     "Mobile App": "bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 border-purple-500/30",
     "Python Application": "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-emerald-500/30",
   };
 
   // Filter categories
-  const filterCategories = ["All", "Web Application", "Web Design", "Mobile App", "Python Application"];
+  const filterCategories = ["All", "Web Application", "Mobile App", "Python Application"];
 
   // Filter projects based on active filter
   const filteredProjects = activeFilter === "All" 
@@ -219,7 +218,7 @@ const Work = ({ isDarkMode }) => {
                     {/* Category badge */}
                     <div className="absolute top-4 left-4 z-10">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md border ${
-                        categoryColors[project.description] || categoryColors["Web Design"]
+                        categoryColors[project.description] || categoryColors["Web Application"]
                       }`}>
                         {project.description}
                       </span>
@@ -260,7 +259,6 @@ const Work = ({ isDarkMode }) => {
                     {/* Description with better visibility */}
                     <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
                       {project.description === "Web Application" && "Advanced web application with modern technologies."}
-                      {project.description === "Web Design" && "A modern and responsive web design showcasing clean UI/UX principles."}
                       {project.description === "Mobile App" && "Full-featured mobile application with intuitive user interface."}
                       {project.description === "Python Application" && "Robust Python-based application with efficient functionality."}
                     </p>

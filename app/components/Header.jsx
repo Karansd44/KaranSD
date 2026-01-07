@@ -101,7 +101,7 @@ const Header = ({ isDarkMode }) => {
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-Ovo font-bold leading-tight"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-blue-400 dark:via-purple-400 dark:to-blue-400 animate-gradient">
-            Full Stack Developer
+            Web Developer
           </span>
         </motion.h1>
 

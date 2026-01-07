@@ -18,8 +18,8 @@ const About = ({ isDarkMode }) => {
 
   const item = {
     hidden: { opacity: 0, y: 30 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         type: "spring",
@@ -45,8 +45,8 @@ const About = ({ isDarkMode }) => {
   const cardGlow = {
     initial: { boxShadow: "0 0 0 rgba(0,0,0,0)" },
     hover: {
-      boxShadow: isDarkMode 
-        ? "0 0 20px rgba(124, 58, 237, 0.6)" 
+      boxShadow: isDarkMode
+        ? "0 0 20px rgba(124, 58, 237, 0.6)"
         : "0 0 20px rgba(59, 130, 246, 0.6)",
       transition: { duration: 0.3 }
     }
@@ -104,7 +104,7 @@ const About = ({ isDarkMode }) => {
         </div>
 
         <motion.div
-          className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 my-10"
+          className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 lg:gap-16 my-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -114,7 +114,7 @@ const About = ({ isDarkMode }) => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ 
+            transition={{
               duration: 0.8,
               type: "spring",
               bounce: 0.4
@@ -125,17 +125,18 @@ const About = ({ isDarkMode }) => {
           >
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10" />
             <motion.div
-              whileHover={{ 
+              whileHover={{
                 boxShadow: "0 20px 50px -10px rgba(59, 130, 246, 0.5)"
               }}
-              className="overflow-hidden rounded-3xl border-4 border-white/10 shadow-2xl"
+              className="overflow-hidden rounded-3xl border-4 border-white/10 shadow-2xl top-10"
             >
               <Image
                 src={assets.user_image}
                 alt="user"
                 width={320}
                 height={320}
-                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                // Added 'object-top' to the className below
+                className="w-full h-auto object-cover object-top self-start hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
             <motion.div
@@ -164,8 +165,8 @@ const About = ({ isDarkMode }) => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              Aspiring Full Stack Developer pursuing B.Tech in Computer Science at Cambridge Institute of Technology.
-              Skilled in React.js, Tailwind CSS, MySQL, and MongoDB with hands-on project and internship experience.
+              Aspiring Web Developer pursuing B.Tech in Computer Science at Cambridge Institute of Technology.
+              Skilled in JavaScript, React.js, Tailwind CSS, Figma and MySQL with hands-on project and internship experience.
               Passionate about building scalable applications and constantly improving through real-world challenges.
             </motion.p>
 
@@ -184,16 +185,16 @@ const About = ({ isDarkMode }) => {
                   initial="initial"
                   whileHover={{
                     y: -8,
-                    boxShadow: isDarkMode 
-                      ? "0 10px 25px -5px rgba(124, 58, 237, 0.4)" 
+                    boxShadow: isDarkMode
+                      ? "0 10px 25px -5px rgba(124, 58, 237, 0.4)"
                       : "0 10px 25px -5px rgba(59, 130, 246, 0.4)"
                   }}
                   className="relative border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer transition-all duration-300 backdrop-blur-sm bg-white/30 dark:bg-gray-900/30 dark:border-white/30"
                   custom={index}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    background: isDarkMode 
-                      ? "linear-gradient(135deg, rgba(17, 24, 39, 0.3) 0%, rgba(31, 41, 55, 0.3) 100%)" 
+                    background: isDarkMode
+                      ? "linear-gradient(135deg, rgba(17, 24, 39, 0.3) 0%, rgba(31, 41, 55, 0.3) 100%)"
                       : "linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(243, 244, 246, 0.3) 100%)"
                   }}
                 >
@@ -217,7 +218,7 @@ const About = ({ isDarkMode }) => {
                     {description}
                   </p>
                   {counter && (
-                    <motion.div 
+                    <motion.div
                       className={counter.className}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -250,7 +251,7 @@ const About = ({ isDarkMode }) => {
                 </span>
                 <span className="h-px flex-1 bg-gray-400 dark:bg-white/50"></span>
               </motion.h4>
-              
+
               <motion.ul
                 variants={container}
                 initial="hidden"
@@ -261,28 +262,28 @@ const About = ({ isDarkMode }) => {
                 {toolsData.map((tool, index) => (
                   <motion.li
                     variants={item}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.15,
                       y: -8,
-                      boxShadow: isDarkMode 
-                        ? "0 10px 25px -5px rgba(124, 58, 237, 0.4)" 
+                      boxShadow: isDarkMode
+                        ? "0 10px 25px -5px rgba(124, 58, 237, 0.4)"
                         : "0 10px 25px -5px rgba(59, 130, 246, 0.4)"
                     }}
                     whileTap={{ scale: 0.9 }}
                     className="flex items-center justify-center w-14 sm:w-16 aspect-square border border-gray-400 rounded-xl cursor-pointer transition-all duration-300 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm dark:border-white/30 hover:shadow-lg"
                     key={index}
                     style={{
-                      background: isDarkMode 
-                        ? "linear-gradient(135deg, rgba(31, 41, 55, 0.5) 0%, rgba(17, 24, 39, 0.5) 100%)" 
+                      background: isDarkMode
+                        ? "linear-gradient(135deg, rgba(31, 41, 55, 0.5) 0%, rgba(17, 24, 39, 0.5) 100%)"
                         : "linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(243, 244, 246, 0.5) 100%)"
                     }}
                   >
-                    <Image 
-                      src={tool} 
-                      alt="Tool" 
-                      width={28} 
-                      height={28} 
-                      className="w-7 sm:w-8" 
+                    <Image
+                      src={tool}
+                      alt="Tool"
+                      width={28}
+                      height={28}
+                      className="w-7 sm:w-8"
                     />
                   </motion.li>
                 ))}

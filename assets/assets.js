@@ -1,4 +1,4 @@
-import user_image from "./user-image.png";
+import user_image from "./user-image1.png";
 import code_icon from "./code-icon.png";
 import code_icon_dark from "./code-icon-dark.png";
 import edu_icon from "./edu-icon.png";
@@ -103,15 +103,23 @@ export const workData = [
     link:"https://ai-powered-healthcare-medicare-ask.vercel.app/"
   },
   {
+    title: "macOS Inspired Portfolio",
+    description: "Web Application",
+    bgImage: "/work-10.png",
+    link: "https://karansd.vercel.app/",
+    style: { border: "2px solid #ddd", borderRadius: "5px" },
+  },
+  {
     title: "E-Commerce Platform",
     description: "Web Application",
     bgImage: "/work-7.png",
     style: { border: "9px solid #ddd", borderRadius: "5px" },
     link:"https://github.com/Karansd44/Ecommerce-webiste"
   },
+  
   {
     title: "Cocktail Website",
-    description: "Web Design",
+    description: "Web Application",
     bgImage: "/work-9.png",
     link: "https://cock-tail.vercel.app/",
     style: { border: "2px solid #ddd", borderRadius: "5px" },
@@ -125,7 +133,7 @@ export const workData = [
   },
   {
     title: "Personal Portfolio",
-    description: "Web Design",
+    description: "Web Application",
     bgImage: "/work-6.png",
     style: { border: "9px solid #ddd", borderRadius: "5px" },
     link:"#top"
@@ -139,7 +147,7 @@ export const workData = [
   },
   {
     title: "Portfolio Website",
-    description: "Web Design",
+    description: "Web Application",
     bgImage: "/work-1.png",
     link: "https://github.com/Karansd44/PORTFOLIO",
     style: { border: "2px solid #ddd", borderRadius: "5px" },
@@ -153,18 +161,19 @@ export const workData = [
   },
   {
     title: "Valentine Website",
-    description: "Web Design",
+    description: "Web Application",
     bgImage: "/work-4.png",
     link: "https://karansd44.github.io/Will-you-Valentine-me/",
     style: { border: "2px solid #ddd", borderRadius: "5px" },
   },
+  
 
 ];
 
 export const serviceData = [
   {
     icon: assets.web_icon,
-    title: "Web design",
+    title: "Web Application",
     description: "Web development is the process of building, programming...",
     link: "",
   },

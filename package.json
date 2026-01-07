@@ -17,10 +17,10 @@
     "lucide-react": "^0.479.0",
     "mongoose": "^8.12.1",
     "motion": "^12.4.4",
-    "next": "15.1.7",
-    "react": "^19.0.0",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
     "react-chatbot-kit": "^2.2.2",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.2.3",
     "swr": "^2.3.2",
     "three": "^0.180.0"
   },
@@ -28,7 +28,7 @@
     "@eslint/eslintrc": "^3",
     "css-loader": "^7.1.2",
     "eslint": "^9",
-    "eslint-config-next": "15.1.7",
+    "eslint-config-next": "^16.1.1",
     "postcss": "^8",
     "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.1"

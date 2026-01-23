@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const [isScroll, setIsScroll] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredTab, setHoveredTab] = useState(null); // State for wave animation
   const sideMenuRef = useRef();
 
   const openMenu = () => {
@@ -53,14 +54,6 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
       {/* Main Navbar */}
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 0.6,
-          type: "spring",
-          stiffness: 120,
-          damping: 20
-        }}
         className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-500 ${isScroll
           ? "bg-white/90 backdrop-blur-xl shadow-sm border-b border-gray-200 dark:bg-gray-900/90 dark:border-gray-800"
           : "bg-transparent"
@@ -106,19 +99,28 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                 stiffness: 300,
                 damping: 20
               }}
-              className="font-Ovo"
+              onMouseEnter={() => setHoveredTab(item.href)}
+              onMouseLeave={() => setHoveredTab(null)}
+              className="relative font-Ovo"
             >
               <motion.a
                 href={item.href}
                 whileHover={{
-                  scale: 1.15,
-                  y: -2,
-                  color: isDarkMode ? "#60A5FA" : "#3B82F6"
+                  scale: 1.05, // Reduced scale slightly for cleaner feel
+                  color: isDarkMode ? "#ffffff" : "#1f2937" // Keep text readable
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="px-3 lg:px-4 py-2 rounded-full hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-gray-700/50 dark:hover:to-gray-600/50 transition-all duration-200 inline-block relative text-gray-700 dark:text-white"
+                className={`relative px-3 lg:px-4 py-2 rounded-full transition-colors duration-200 inline-block z-10 ${hoveredTab === item.href ? "text-gray-900 dark:text-white" : "text-gray-600 dark:text-gray-300"}`}
               >
+                {/* Wave Animation Background */}
+                {hoveredTab === item.href && (
+                  <motion.span
+                    layoutId="wave-pill"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/40 dark:to-purple-900/40 rounded-full -z-10"
+                  />
+                )}
                 {item.label}
               </motion.a>
             </motion.li>

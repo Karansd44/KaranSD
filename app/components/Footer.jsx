@@ -19,7 +19,7 @@ const Footer = ({ isDarkMode }) => {
         <p>© 2025 SD Karan. All rights reserved.</p>
         <ul className="flex items-center gap-5 justify-center mt-4 sm:mt-0">
           {[
-            { label: "GitHub", href: "https://github.com/Karansd44" },
+            { label: "GitHub", href: "https://github.com/Karansd44?tab=repositories" },
             { label: "LinkedIn", href: "https://www.linkedin.com/in/karan-s-d-69577434a/" },
             { label: "Insta", href: "https://www.instagram.com/karansd_4?igsh=NTJlemgwNHZ1bm03" }
           ].map((item) => (

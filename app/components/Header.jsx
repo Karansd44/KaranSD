@@ -270,7 +270,7 @@ const Header = ({ isDarkMode }) => {
           </motion.p>
           <div className="flex gap-4">
             <motion.a
-              href="https://github.com/Karansd44"
+              href="https://github.com/Karansd44?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ scale: 0.5, rotate: -10 }}
